@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=tiger
+      - MYSQL_DATABASE=todo_sch
+      - MYSQL_USER=todo_dba
+      - MYSQL_PASSWORD=tiger123
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
