@@ -30,7 +30,7 @@ public class TodoService {
     }
 
     public Todo createTodo(CreateTodoDTO createTodoDTO) {
-        User user = userRepository.findById(createTodoDTO.getUserId())
+        User user = userRepository.findByUsername(createTodoDTO.getUsername())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user ID"));
 
         Todo todo = Todo.builder()
