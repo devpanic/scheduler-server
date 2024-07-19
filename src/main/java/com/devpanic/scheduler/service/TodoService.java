@@ -5,6 +5,7 @@ import com.devpanic.scheduler.entity.Todo;
 import com.devpanic.scheduler.entity.User;
 import com.devpanic.scheduler.repository.TodoRepository;
 import com.devpanic.scheduler.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,12 @@ public class TodoService {
                 .build();
 
         return todoRepository.save(todo);
+    }
+
+    public void deleteTodo(Long id) {
+        Todo todo = todoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Todo not found with id: " + id));
+
+        todoRepository.delete(todo);
     }
 }
