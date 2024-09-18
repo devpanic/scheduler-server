@@ -36,3 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 mysql-data
+
+### QueryDSL ###
+src/main/generated/
